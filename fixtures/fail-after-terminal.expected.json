@@ -1,0 +1,1 @@
+{"findings":[{"code":"AFTER_TERMINAL","id":null,"pointer":"/events/1"}],"schema_version":1,"stats":{"mutation_count":1,"observed_count":1,"page_count":1,"snapshot_count":1},"status":"fail"}

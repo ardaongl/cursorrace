@@ -1,0 +1,12 @@
+# Local/generated files; review traces for sensitive IDs before adding them.
+.env
+.env.*
+!.env.example
+.local-verification/
+.DS_Store
+__pycache__/
+.venv/
+build/
+dist/
+*.egg-info/
+*.log

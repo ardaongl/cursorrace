@@ -1,0 +1,15 @@
+# Gated implementation milestones
+
+This approved five-milestone plan is now authorized for local implementation through LOCAL_READY by the attached goal objective. Deliverables and gates remain unchanged; actual outcomes and evidence are recorded in IMPLEMENTATION-STATUS.md and BUILD-EVIDENCE.md.
+
+| Milestone | Work and deliverables | Required gate/evidence |
+|---|---|---|
+| M0 — Preflight | Read all contract files, schema/fixture inventory and status. Reverify CPython3.14.8/pip26.2.1; confirm backend availability without changing runtime policy. Map every AC to planned tests; inspect OS and capture isolated environment. Resolve actual contradictions with narrow ADRs and user decision if scope changes. | M0_PASS only with an environment/traceability report and factory preflight metadata check; no product code necessary. |
+| M1 — Strict input boundary | Create src package, minimal CLI and packaging metadata; strict bounded reader/decoder, shape and ledger validators. Add independent ValidationTests and argument/error tests before traversal. | AC-04 partitions and applicable AC-06 pass; input-invalid examples return exact exit2 envelopes. No incomplete checker can claim overall PASS. |
+| M2 — Pure traversal oracle | Implement immutable domain model, fixed snapshot rank, ledger-independent traversal, ordered findings and canonical report. Add hand-derived SnapshotTests/FindingTests/TraversalTests/ReportTests. | AC-01–05 pass through domain tests plus subprocess smoke. Static golden findings must match without editing to match implementation. |
+| M3 — Installed end-to-end boundary | Complete process channel/error/interrupt behavior, console/module parity, fixture_gate, stream/privacy/no-network/no-write cases. Document runnable demo and constraints. | AC-01–07 pass via installed CLI, unittest discovery and all 17 fixtures; record deliberate nonzero product exits. |
+| M4 — Distribution and local candidate | Add MIT LICENSE, package schemas/readme, sdist fixtures/tests/docs, package_gate and Ubuntu24.04 CI workflow using verified immutable action SHAs. Run wheel and sdist clean installs outside checkout. Validate docs/demo and final local metadata. | AC-01–08 PASS with fresh evidence; all three full commands exit0; LOCAL_READY, hosted CI PENDING_HOSTED_CI. |
+
+After M4 stop. Separate audit phase performs adversarial read-only review with new cases, then hardening if needed. Audit must cover packaged artifact as well as source. Push/release/package publication stay separately authorized; hosted CI can only be evidenced after an authorized push. No goal is active from this document alone.
+
+Dependencies: zero runtime; one exactly pinned build backend. No infrastructure setup, credentials or billable integration. If package/backend cannot be acquired, capture exact command failure; do not silently change toolchain. Tests are stdlib, so dependency lockfile for runtime would add no value. Backend wheel hashes and commands are recorded at M0/M4. M0 may discover a patch update is warranted; record a specific ADR and rerun affected verification before claiming readiness, never silently inherit host Python.

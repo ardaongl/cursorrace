@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "project": {
+    "slug": "cursorrace",
+    "title": "CursorRace",
+    "profile": "micro"
+  },
+  "phase": "AUDIT_PASS",
+  "acceptance": [
+    {
+      "id": "AC-01",
+      "status": "PASS",
+      "evidence": [
+        ".local-verification/hardening/full-unit.json"
+      ]
+    },
+    {
+      "id": "AC-02",
+      "status": "PASS",
+      "evidence": [
+        ".local-verification/hardening/full-unit.json"
+      ]
+    },
+    {
+      "id": "AC-03",
+      "status": "PASS",
+      "evidence": [
+        ".local-verification/hardening/full-unit.json"
+      ]
+    },
+    {
+      "id": "AC-04",
+      "status": "PASS",
+      "evidence": [
+        ".local-verification/hardening/full-unit.json"
+      ]
+    },
+    {
+      "id": "AC-05",
+      "status": "PASS",
+      "evidence": [
+        ".local-verification/hardening/full-unit.json"
+      ]
+    },
+    {
+      "id": "AC-06",
+      "status": "PASS",
+      "evidence": [
+        ".local-verification/hardening/full-unit.json"
+      ]
+    },
+    {
+      "id": "AC-07",
+      "status": "PASS",
+      "evidence": [
+        ".local-verification/hardening/fixture-gate.json"
+      ]
+    },
+    {
+      "id": "AC-08",
+      "status": "PASS",
+      "evidence": [
+        ".local-verification/hardening/package-final.json"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "command": ".venv/bin/python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "evidence": ".local-verification/hardening/full-unit.json"
+    },
+    {
+      "command": ".venv/bin/python -m tests.fixture_gate",
+      "exit_code": 0,
+      "evidence": ".local-verification/hardening/fixture-gate.json"
+    },
+    {
+      "command": ".venv/bin/python -B -m tests.package_gate (isolated candidate copy)",
+      "exit_code": 0,
+      "evidence": ".local-verification/hardening/package-final.json"
+    }
+  ],
+  "audit": {
+    "status": "PASS",
+    "candidate_fingerprint": "490288eff5d54e36b2bfc1322dee755f2efcb2bc74beb1a8729a2d753dcc3657",
+    "fingerprint_scope": "83-file hardened candidate before publication bookkeeping; product, tests, schemas and fixtures unchanged by reconciliation",
+    "findings": [],
+    "resolved_findings": [
+      {
+        "id": "D1",
+        "severity": "P2",
+        "acceptance": "AC-06",
+        "resolution": "INDEPENDENTLY_CONFIRMED_FIXED"
+      }
+    ],
+    "nonblocking_findings": [
+      {
+        "id": "N1",
+        "severity": "P3",
+        "description": "Eight unresolved relative README links in wheel",
+        "follow_up": "Review before future PyPI publication"
+      }
+    ],
+    "report": "docs/AUDIT-EVIDENCE.md",
+    "raw_evidence": ".local-verification/reaudit/",
+    "reaudit_required": false
+  },
+  "authorization": {
+    "initial_push": true,
+    "remote": "https://github.com/ardaongl/cursorrace",
+    "visibility": "public",
+    "branch": "main",
+    "allowed": [
+      "create-repository",
+      "commit",
+      "push-main",
+      "configure-description-topics",
+      "inspect-actions",
+      "narrow-ci-fixes",
+      "corrective-pushes",
+      "record-evidence"
+    ],
+    "excluded": [
+      "pypi",
+      "github-release",
+      "deployment",
+      "force-push",
+      "overwrite-existing-repository"
+    ]
+  },
+  "hosted_ci": {
+    "status": "PENDING_HOSTED_CI",
+    "head_sha": null,
+    "conclusion": null,
+    "run_url": null
+  },
+  "final_commit_sha": null,
+  "specification": {
+    "status": "SPEC_READY",
+    "date": "2026-10-19",
+    "product_implemented": false,
+    "fixtures": 17,
+    "schemas": 2,
+    "verification_scope": "Documentation metadata and declarative fixture consistency only; no product acceptance executed."
+  },
+  "preflight": {
+    "status": "PASS",
+    "source": "Final independent read-only M0 review in this chat, verified CPython3.14.8, AC05 repaired, 17 fixtures/2 schemas preserved",
+    "record": "docs/BUILD-EVIDENCE.md"
+  },
+  "implementation": {
+    "status": "LOCAL_READY",
+    "milestones": {
+      "M0": "PASS",
+      "M1": "PASS",
+      "M2": "PASS",
+      "M3": "PASS",
+      "M4": "PASS"
+    },
+    "source_attestation": ".local-verification/hardening/final-attestation.json",
+    "audit_required": false,
+    "ready_for_initial_push": true,
+    "original_build_attestation": ".local-verification/build/final-attestation.json"
+  },
+  "hardening": {
+    "status": "PASS_LOCAL",
+    "defect": "D1",
+    "record": "docs/HARDENING-EVIDENCE.md",
+    "source_attestation": ".local-verification/hardening/final-attestation.json",
+    "independent_reaudit": "PASS",
+    "deferred_findings": [
+      {
+        "id": "N1",
+        "severity": "P3",
+        "description": "Eight unresolved relative README links in wheel",
+        "status": "DEFERRED_NONBLOCKING"
+      }
+    ]
+  },
+  "audit_history": [
+    {
+      "stage": "initial-independent-audit",
+      "status": "BLOCKED",
+      "candidate_fingerprint": "5fed33c493283f5cc7b186bb230ac6344725906bbfcf6601e7398911fc877b14",
+      "findings": [
+        {
+          "id": "D1",
+          "severity": "P2",
+          "acceptance": "AC-06",
+          "description": "Unavailable CPython standard streams escape IO handling",
+          "resolution": "LOCAL_FIX_VERIFIED_REAUDIT_PENDING"
+        }
+      ],
+      "report": ".local-verification/hardening/prior-audit/AUDIT-REPORT.md",
+      "current_candidate_audit": "NOT_RUN",
+      "reaudit_required": true
+    },
+    {
+      "stage": "hardening",
+      "status": "PASS_LOCAL",
+      "defect": "D1",
+      "resolution": "EXPLICIT_NONE_STREAM_GUARDS",
+      "record": "docs/HARDENING-EVIDENCE.md"
+    }
+  ]
+}

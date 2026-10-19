@@ -1,0 +1,1 @@
+{"findings":[{"code":"MISSING_ID","id":"b","pointer":"/snapshot/1"}],"schema_version":1,"stats":{"mutation_count":1,"observed_count":2,"page_count":2,"snapshot_count":3},"status":"fail"}

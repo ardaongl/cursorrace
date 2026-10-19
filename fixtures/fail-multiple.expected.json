@@ -1,0 +1,1 @@
+{"findings":[{"code":"PAGE_OVERFLOW","id":null,"pointer":"/events/0/ids"},{"code":"OUT_OF_ORDER","id":"a","pointer":"/events/0/ids/1"},{"code":"DUPLICATE_ID","id":"a","pointer":"/events/0/ids/2"},{"code":"UNEXPECTED_ID","id":"x","pointer":"/events/0/ids/3"}],"schema_version":1,"stats":{"mutation_count":0,"observed_count":4,"page_count":1,"snapshot_count":2},"status":"fail"}

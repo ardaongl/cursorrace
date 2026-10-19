@@ -1,0 +1,1 @@
+{"findings":[{"code":"UNEXPECTED_ID","id":"x","pointer":"/events/1/ids/1"}],"schema_version":1,"stats":{"mutation_count":1,"observed_count":3,"page_count":1,"snapshot_count":2},"status":"fail"}

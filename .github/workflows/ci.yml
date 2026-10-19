@@ -1,0 +1,28 @@
+name: CursorRace local acceptance
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, verified via official tag API
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6, verified via official tag API
+        with:
+          python-version: '3.14.8'
+      - name: Bootstrap pinned tooling and install
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install pip==26.2.1 setuptools==80.9.0
+          .venv/bin/python -m pip install --no-deps .
+      - name: Unit and installed process contracts
+        run: .venv/bin/python -m unittest discover -s tests -v
+      - name: Canonical fixture gate
+        run: .venv/bin/python -m tests.fixture_gate
+      - name: Isolated wheel and sdist gate
+        run: .venv/bin/python -m tests.package_gate
+      - name: Factory audit metadata gate
+        run: .venv/bin/python scripts/factory_validate.py --project-dir . --phase audit

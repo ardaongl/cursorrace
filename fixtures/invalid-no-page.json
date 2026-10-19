@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "policy": "snapshot",
+  "snapshot": [],
+  "page_size": 2,
+  "events": [
+    {
+      "type": "insert",
+      "id": "x"
+    }
+  ]
+}

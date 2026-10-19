@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CursorRace report v1",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "status": {
+          "const": "pass"
+        },
+        "stats": {
+          "type": "object",
+          "properties": {
+            "snapshot_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "page_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "mutation_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "observed_count": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "snapshot_count",
+            "page_count",
+            "mutation_count",
+            "observed_count"
+          ],
+          "additionalProperties": false
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "enum": [
+                      "DUPLICATE_ID",
+                      "UNEXPECTED_ID",
+                      "OUT_OF_ORDER",
+                      "MISSING_ID"
+                    ]
+                  },
+                  "pointer": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,63}$",
+                    "maxLength": 64,
+                    "not": {
+                      "pattern": "[^A-Za-z0-9_.:-]"
+                    }
+                  }
+                },
+                "required": [
+                  "code",
+                  "pointer",
+                  "id"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "enum": [
+                      "AFTER_TERMINAL",
+                      "CHAIN_MISMATCH",
+                      "CURSOR_CYCLE",
+                      "PAGE_OVERFLOW",
+                      "INCOMPLETE"
+                    ]
+                  },
+                  "pointer": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "code",
+                  "pointer",
+                  "id"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "maxItems": 0
+        }
+      },
+      "required": [
+        "schema_version",
+        "status",
+        "stats",
+        "findings"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "status": {
+          "const": "fail"
+        },
+        "stats": {
+          "type": "object",
+          "properties": {
+            "snapshot_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "page_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "mutation_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "observed_count": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "snapshot_count",
+            "page_count",
+            "mutation_count",
+            "observed_count"
+          ],
+          "additionalProperties": false
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "enum": [
+                      "DUPLICATE_ID",
+                      "UNEXPECTED_ID",
+                      "OUT_OF_ORDER",
+                      "MISSING_ID"
+                    ]
+                  },
+                  "pointer": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,63}$",
+                    "maxLength": 64,
+                    "not": {
+                      "pattern": "[^A-Za-z0-9_.:-]"
+                    }
+                  }
+                },
+                "required": [
+                  "code",
+                  "pointer",
+                  "id"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "enum": [
+                      "AFTER_TERMINAL",
+                      "CHAIN_MISMATCH",
+                      "CURSOR_CYCLE",
+                      "PAGE_OVERFLOW",
+                      "INCOMPLETE"
+                    ]
+                  },
+                  "pointer": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "null"
+                  }
+                },
+                "required": [
+                  "code",
+                  "pointer",
+                  "id"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "status",
+        "stats",
+        "findings"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "status": {
+          "const": "error"
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "enum": [
+                "ARGUMENT",
+                "LIMIT",
+                "ENCODING",
+                "JSON",
+                "SCHEMA",
+                "LEDGER"
+              ]
+            },
+            "pointer": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "code",
+            "pointer"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schema_version",
+        "status",
+        "error"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

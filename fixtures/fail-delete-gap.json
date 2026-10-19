@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "policy": "snapshot",
+  "snapshot": [
+    "a",
+    "b",
+    "c"
+  ],
+  "page_size": 2,
+  "events": [
+    {
+      "type": "page",
+      "request_cursor": null,
+      "ids": [
+        "a"
+      ],
+      "next_cursor": "k"
+    },
+    {
+      "type": "delete",
+      "id": "b"
+    },
+    {
+      "type": "page",
+      "request_cursor": "k",
+      "ids": [
+        "c"
+      ],
+      "next_cursor": null
+    }
+  ]
+}

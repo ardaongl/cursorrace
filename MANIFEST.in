@@ -1,0 +1,6 @@
+include LICENSE README.md GOAL.md AGENTS.md .python-version
+recursive-include schemas *.json
+recursive-include fixtures *.json
+recursive-include docs *.md *.json
+recursive-include tests *.py
+recursive-include .github *.yml

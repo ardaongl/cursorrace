@@ -1,0 +1,1 @@
+{"findings":[{"code":"DUPLICATE_ID","id":"b","pointer":"/events/2/ids/0"}],"schema_version":1,"stats":{"mutation_count":1,"observed_count":4,"page_count":2,"snapshot_count":3},"status":"fail"}

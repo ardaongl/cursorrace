@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "pass-snapshot",
+      "input": "pass-snapshot.json",
+      "stdout": "pass-snapshot.expected.json",
+      "exit_code": 0,
+      "stderr": "",
+      "reason": "Deleted original b remains required; inserted x excluded."
+    },
+    {
+      "id": "pass-empty",
+      "input": "pass-empty.json",
+      "stdout": "pass-empty.expected.json",
+      "exit_code": 0,
+      "stderr": "",
+      "reason": "Empty dataset terminates."
+    },
+    {
+      "id": "pass-empty-continuation",
+      "input": "pass-empty-continuation.json",
+      "stdout": "pass-empty-continuation.expected.json",
+      "exit_code": 0,
+      "stderr": "",
+      "reason": "An empty continuation is legal."
+    },
+    {
+      "id": "fail-delete-gap",
+      "input": "fail-delete-gap.json",
+      "stdout": "fail-delete-gap.expected.json",
+      "exit_code": 1,
+      "stderr": "",
+      "reason": "Deletion does not excuse snapshot gap."
+    },
+    {
+      "id": "fail-insert-shift",
+      "input": "fail-insert-shift.json",
+      "stdout": "fail-insert-shift.expected.json",
+      "exit_code": 1,
+      "stderr": "",
+      "reason": "Models duplicate from offset shift after insertion."
+    },
+    {
+      "id": "fail-order",
+      "input": "fail-order.json",
+      "stdout": "fail-order.expected.json",
+      "exit_code": 1,
+      "stderr": "",
+      "reason": "Membership alone is insufficient."
+    },
+    {
+      "id": "fail-unexpected",
+      "input": "fail-unexpected.json",
+      "stdout": "fail-unexpected.expected.json",
+      "exit_code": 1,
+      "stderr": "",
+      "reason": "Inserted identity is outside snapshot."
+    },
+    {
+      "id": "fail-chain",
+      "input": "fail-chain.json",
+      "stdout": "fail-chain.expected.json",
+      "exit_code": 1,
+      "stderr": "",
+      "reason": "Captured request did not follow continuation."
+    },
+    {
+      "id": "fail-cycle",
+      "input": "fail-cycle.json",
+      "stdout": "fail-cycle.expected.json",
+      "exit_code": 1,
+      "stderr": "",
+      "reason": "Loop and lack of terminal are independent."
+    },
+    {
+      "id": "fail-incomplete",
+      "input": "fail-incomplete.json",
+      "stdout": "fail-incomplete.expected.json",
+      "exit_code": 1,
+      "stderr": "",
+      "reason": "Missing b is not asserted without terminal."
+    },
+    {
+      "id": "fail-overflow",
+      "input": "fail-overflow.json",
+      "stdout": "fail-overflow.expected.json",
+      "exit_code": 1,
+      "stderr": "",
+      "reason": "Shape-valid page exceeds declared page size."
+    },
+    {
+      "id": "fail-after-terminal",
+      "input": "fail-after-terminal.json",
+      "stdout": "fail-after-terminal.expected.json",
+      "exit_code": 1,
+      "stderr": "",
+      "reason": "No event is allowed after traversal ends."
+    },
+    {
+      "id": "fail-multiple",
+      "input": "fail-multiple.json",
+      "stdout": "fail-multiple.expected.json",
+      "exit_code": 1,
+      "stderr": "",
+      "reason": "Finding order is fixed across simultaneous defects."
+    },
+    {
+      "id": "invalid-ledger",
+      "input": "invalid-ledger.json",
+      "stdout": "invalid-ledger.expected.json",
+      "exit_code": 2,
+      "stderr": "",
+      "reason": "Reject invalid capture before domain analysis."
+    },
+    {
+      "id": "invalid-version",
+      "input": "invalid-version.json",
+      "stdout": "invalid-version.expected.json",
+      "exit_code": 2,
+      "stderr": "",
+      "reason": "Reject invalid capture before domain analysis."
+    },
+    {
+      "id": "invalid-no-page",
+      "input": "invalid-no-page.json",
+      "stdout": "invalid-no-page.expected.json",
+      "exit_code": 2,
+      "stderr": "",
+      "reason": "Reject invalid capture before domain analysis."
+    },
+    {
+      "id": "invalid-duplicate-key",
+      "input": "invalid-duplicate-key.json",
+      "stdout": "invalid-duplicate-key.expected.json",
+      "exit_code": 2,
+      "stderr": "",
+      "reason": "Duplicate JSON keys cannot silently overwrite."
+    }
+  ]
+}

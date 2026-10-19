@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "policy": "snapshot",
+  "snapshot": [
+    "a"
+  ],
+  "page_size": 2,
+  "events": [
+    {
+      "type": "page",
+      "request_cursor": null,
+      "ids": [
+        "a"
+      ],
+      "next_cursor": null
+    },
+    {
+      "type": "insert",
+      "id": "x"
+    }
+  ]
+}
